@@ -28,6 +28,14 @@ const addNewGoal = () => {
     // ⚠️ Hint 2: Prevent duplicates
     // If a duplicate is found, display an alert to the user and don't add the goal to the list.
     // If it's not a duplicate, proceed with adding it as a new goal.
+
+    const goalItems = goalList.getElementsByTagName('li')
+    for(let i = 0 ; i < goalItems.length ; i ++) {
+        if(goalItems[i].textContent === goalInput) {
+            alert("Can't enter duplicate goals")
+            return
+        }
+    }
     
     // ⚠️ Hint 3: Code structure
     // You might want to wrap the duplicate-checking logic in an 'if' statement.
@@ -39,7 +47,8 @@ const addNewGoal = () => {
     const newGoal = document.createElement('li');
     newGoal.textContent = goalInput;
     goalList.appendChild(newGoal);
-};
+   };
+
 
 // Add event listener to the goal submit button
 document.querySelector('#submitGoal').addEventListener('click', addNewGoal);
